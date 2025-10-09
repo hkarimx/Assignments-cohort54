@@ -1,0 +1,21 @@
+*** Unit Test Error Report ***
+
+ PASS  .dist/3-UsingAPIs/Week1/unit-tests/ex1-johnWho.test.js
+  api-wk1-ex1-johnWho
+    ✅ should exist and be executable (3 ms)
+    ✅ should have all TODO comments removed (1 ms)
+    ✅ `getAnonName` should not contain unneeded console.log calls (1 ms)
+    ✅ should call `new Promise()` (1 ms)
+    ✅ should take a single argument
+    ✅ `resolve()` should be called with a one argument (1 ms)
+    ✅ `reject()` should be called with a one argument
+    ✅ should resolve when called with a string argument (2 ms)
+    ✅ should reject with an Error object when called without an argument (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        1.482 s
+Ran all test suites matching /C:\\Users\\khann\\IdeaProjects\\Assignments-cohort54\\.dist\\3-UsingAPIs\\Week1\\unit-tests\\ex1-johnWho.test.js/i.
+No linting errors detected.
+No spelling errors detected.

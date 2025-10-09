@@ -1,0 +1,19 @@
+*** Unit Test Error Report ***
+
+ PASS  .dist/3-UsingAPIs/Week1/unit-tests/ex4-pokerDiceAll.test.js
+  api-wk1-ex4-pokerDiceAll
+    ✅ should exist and be executable (3 ms)
+    ✅ should have all TODO comments removed
+    ✅ `rollDice` should not contain unneeded console.log calls (1 ms)
+    ✅ should use `dice.map()` (1 ms)
+    ✅ should use `Promise.all()`
+    ✅ should resolve when all dice settle successfully (15 ms)
+    ✅ should reject with an Error when a die rolls off the table (80 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       7 passed, 7 total
+Snapshots:   0 total
+Time:        1.426 s
+Ran all test suites matching /C:\\Users\\khann\\IdeaProjects\\Assignments-cohort54\\.dist\\3-UsingAPIs\\Week1\\unit-tests\\ex4-pokerDiceAll.test.js/i.
+No linting errors detected.
+No spelling errors detected.
