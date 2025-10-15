@@ -1,1 +1,9 @@
 /* add your styling here */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 16px;
+    font-family: system-ui, Arial, sans-serif;
+}
+button, select { padding: .4rem .6rem; }

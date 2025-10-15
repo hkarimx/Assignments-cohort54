@@ -1,38 +1,63 @@
-/*------------------------------------------------------------------------------
-Full description at: https://github.com/HackYourFuture/Assignments/blob/main/3-UsingAPIs/Week2/README.md#exercise-2-gotta-catch-em-all
+/* Exercise 2 – simple & functional */
 
-Complete the four functions provided in the starter `index.js` file:
+const LIST_URL = 'https://pokeapi.co/api/v2/pokemon?limit=151';
 
-`fetchData`: In the `fetchData` function, make use of `fetch` and its Promise 
-  syntax in order to get the data from the public API. Errors (HTTP or network 
-  errors) should be logged to the console.
-
-`fetchAndPopulatePokemons`: Use `fetchData()` to load the pokemon data from the 
-  public API and populate the `<select>` element in the DOM.
-  
-`fetchImage`: Use `fetchData()` to fetch the selected image and update the 
-  `<img>` element in the DOM.
-
-`main`: The `main` function orchestrates the other functions. The `main` 
-  function should be executed when the window has finished loading.
-
-Use async/await and try/catch to handle promises.
-
-Try and avoid using global variables. As much as possible, try and use function 
-parameters and return values to pass data back and forth.
-------------------------------------------------------------------------------*/
-function fetchData(/* TODO parameter(s) go here */) {
-  // TODO complete this function
+async function fetchData(url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+  } catch (err) {
+    console.error('Fetch error:', err);
+    throw err;
+  }
 }
 
-function fetchAndPopulatePokemons(/* TODO parameter(s) go here */) {
-  // TODO complete this function
+async function fetchAndPopulatePokemons(select) {
+  select.disabled = true;
+  select.innerHTML = '<option>Loading…</option>';
+
+  const { results } = await fetchData(LIST_URL);
+
+  select.innerHTML =
+    '<option value="">Choose a Pokémon…</option>' +
+    results
+      .map((p) => `<option value="${p.url}">${p.name}</option>`)
+      .join('');
+
+  select.disabled = false;
 }
 
-function fetchImage(/* TODO parameter(s) go here */) {
-  // TODO complete this function
+async function fetchImage(img, detailsUrl) {
+  if (!detailsUrl) return;
+  img.alt = 'Loading…'; img.src = '';
+
+  const d = await fetchData(detailsUrl);
+  const src =
+    d.sprites?.other?.['official-artwork']?.front_default ||
+    d.sprites?.front_default;
+
+  if (src) { img.src = src; img.alt = d.name; }
+  else { img.alt = 'No image available'; }
 }
 
-function main() {
-  // TODO complete this function
+async function main() {
+  const btn = document.createElement('button');
+  btn.textContent = 'Get Pokémon!';
+  const select = document.createElement('select');
+  select.disabled = true;
+  const img = document.createElement('img');
+  img.style.maxWidth = '280px';
+
+  document.body.append(btn, select, img);
+
+  btn.addEventListener('click', async () => {
+    btn.disabled = true;
+    try { await fetchAndPopulatePokemons(select); }
+    catch { alert('Could not load list (see console).'); btn.disabled = false; }
+  });
+
+  select.addEventListener('change', (e) => fetchImage(img, e.target.value));
 }
+
+window.addEventListener('load', main);

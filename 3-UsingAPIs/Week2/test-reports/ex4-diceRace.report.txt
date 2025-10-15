@@ -1,0 +1,19 @@
+*** Unit Test Error Report ***
+
+ PASS  .dist/3-UsingAPIs/Week2/unit-tests/ex4-diceRace.test.js
+  api-wk2-ex4-diceRace
+    ✅ should exist and be executable (2 ms)
+    ✅ should have all TODO comments removed (1 ms)
+    ✅ `rollDice` should not contain unneeded console.log calls
+    ✅ should use `dice.map()`
+    ✅ should use `Promise.race()` (1 ms)
+    ✅ should resolve as soon as a die settles successfully (118 ms)
+    ✅ should reject with an Error as soon as a die rolls off the table (93 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       7 passed, 7 total
+Snapshots:   0 total
+Time:        0.887 s
+Ran all test suites matching /C:\\Users\\khann\\IdeaProjects\\Assignments-cohort54\\.dist\\3-UsingAPIs\\Week2\\unit-tests\\ex4-diceRace.test.js/i.
+No linting errors detected.
+No spelling errors detected.

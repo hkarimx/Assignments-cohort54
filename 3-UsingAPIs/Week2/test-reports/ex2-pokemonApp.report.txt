@@ -1,0 +1,17 @@
+*** Unit Test Error Report ***
+
+ PASS  .dist/3-UsingAPIs/Week2/unit-tests/ex2-pokemonApp.test.js
+  api-wk2-ex2-pokemonApp
+    ✅ HTML should be syntactically valid (147 ms)
+    ✅ should have all TODO comments removed
+    ✅ should use `fetch()`
+    ✅ should use `await fetch()` (1 ms)
+    ✅ should use try/catch
+
+Test Suites: 1 passed, 1 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        3.341 s
+Ran all test suites matching /C:\\Users\\khann\\IdeaProjects\\Assignments-cohort54\\.dist\\3-UsingAPIs\\Week2\\unit-tests\\ex2-pokemonApp.test.js/i.
+No linting errors detected.
+No spelling errors detected.
