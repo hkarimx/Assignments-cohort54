@@ -15,22 +15,30 @@ import { rollDie } from '../../helpers/pokerDiceRoller.js';
 /**
  * Rolls a die until the desired value is rolled.
  * @param {DieFace} desiredValue
+ * @param {number} [maxAttempts=100]
  * @returns {Promise<DieFace>}
  */
-export async function rollDieUntil(desiredValue) {
-  let value;
+export async function rollDieUntil(desiredValue, maxAttempts = 100) {
+  let attempts = 0;
 
   while (true) {
+    attempts += 1;
     try {
-      value = await rollDie();
-      if (value === desiredValue) break;
+      const value = await rollDie();
+      if (value === desiredValue) return value;
+
     } catch (err) {
-      throw err;
+      console.error(`Roll failed on attempt ${attempts}:`, err?.message ?? err);
+
+      if (typeof err?.message === 'string' && /rolled off the table/i.test(err.message)) {
+        throw err;
+      }
+
+      if (attempts >= maxAttempts) {
+        throw new Error(`Gave up after ${attempts} attempts`);
+      }
     }
   }
-
-  return value;
-
 }
 
 
